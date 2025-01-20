@@ -1,60 +1,52 @@
-// src/pages/LoginPage.js
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "./LoginPage.css"; // Import your CSS file
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';  // Import useNavigate
+import './LoginPage.css';  // import stylesheet
 
 const LoginPage = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();  // Initialize useNavigate
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post("http://localhost:3001/auth/login", {
-                username,
-                password,
-            });
-            alert(response.data.message);
-            localStorage.setItem("token", response.data.token);
-            setError("");
-            navigate("/dashboard");
-        } catch (err) {
-            setError(err.response?.data?.message || "An error occurred");
-        }
-    };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      // Send login credentials to the backend
+      const response = await axios.post('http://localhost:3001/auth/login', { email, password });
+      const { token } = response.data;
 
-    return (
-        <div className="login-container">
-            <h1>Login</h1>
-            <form className="login-form" onSubmit={handleLogin}>
-                <div className="form-group">
-                    <label htmlFor="username">Username:</label>
-                    <input
-                        type="text"
-                        id="username"
-                        className="form-control"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        className="form-control"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                {error && <p className="error-text">{error}</p>}
-                <button type="submit" className="btn btn-primary btn-block">Login</button>
-            </form>
-        </div>
-    );
+      // Save the JWT token in localStorage
+      localStorage.setItem('authToken', token);
+
+      // Use useNavigate to redirect the user
+      navigate('/dashboard');  // Redirect to dashboard using React Router
+    } catch (err) {
+      setError('Invalid credentials');
+    }
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Login</button>
+      </form>
+      {error && <p>{error}</p>}
+      <p>Don't have an account? <Link to="/register">Create one here</Link></p>
+    </div>
+  );
 };
 
 export default LoginPage;

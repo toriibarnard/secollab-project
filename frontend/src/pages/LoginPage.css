@@ -4,6 +4,10 @@ body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #6a11cb, #2575fc);
     color: #fff;
+    height: 100%;  /* Ensure body takes full height */
+    display: flex;
+    justify-content: center;  /* Centers the login form horizontally */
+    align-items: center;      /* Centers the login form vertically */
 }
 
 .login-container {
@@ -27,6 +31,7 @@ h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 400px;
+    margin: 0 auto;
 }
 
 .form-group {
@@ -72,4 +77,12 @@ input:focus {
     font-size: 14px;
     margin-top: -10px;
     margin-bottom: 15px;
+    padding: 5px 0;
+}
+
+@media (max-width: 600px) {
+    .login-form {
+        width: 90%;  /* Adjust width for smaller screens */
+        padding: 15px;
+    }
 }

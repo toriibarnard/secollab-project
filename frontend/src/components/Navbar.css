@@ -1,0 +1,20 @@
+/* src/components/Navbar.css */
+.navbar {
+    display: flex;
+    justify-content: flex-start;  /* Align links to the left */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+}
+
+.nav-link {
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.nav-link:hover {
+    color: #2575fc;  /* Change link color on hover */
+}
