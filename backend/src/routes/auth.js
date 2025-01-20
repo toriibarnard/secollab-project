@@ -2,10 +2,11 @@
 const express = require("express");
 const router = express.Router();
 
-// Mock login route
+// Mock login endpoint
 router.post("/login", (req, res) => {
     const { username, password } = req.body;
-    // Mock authentication logic
+
+    // Simple mock authentication logic
     if (username === "admin" && password === "password") {
         res.status(200).json({ message: "Login successful", token: "mock-token" });
     } else {
