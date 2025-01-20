@@ -1,20 +1,81 @@
-/* src/components/Navbar.css */
+/* frontend/src/components/Navbar.css */
+/* navbar Styling */
 .navbar {
     display: flex;
-    justify-content: flex-start;  /* Align links to the left */
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
-}
-
-.nav-link {
-    color: white;
-    margin-right: 20px;
+    background: rgba(35, 35, 35, 0.9);  /* semi-transparent dark background */
+    padding: 20px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.1);
+    backdrop-filter: blur(10px); /* glassmorphism effect */
+    border-bottom: 2px solid rgba(0, 255, 255, 0.5); /* neon blue border */
+  }
+  
+  .navbar-item {
+    color: #e0e0e0;
     text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease; /* Smooth color transition on hover */
-}
-
-.nav-link:hover {
-    color: #2575fc;  /* Change link color on hover */
-}
+    font-size: 1.2rem;
+    margin: 0 20px;
+    padding: 10px 15px;
+    transition: all 0.4s ease;
+    border-radius: 5px;
+  }
+  
+  .navbar-item:hover {
+    background-color: rgba(0, 255, 255, 0.2); /* neon blue hover effect */
+    color: #00ff99; /* neon green color */
+    transform: scale(1.1); /* slight zoom effect */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8); /* glowing neon hover effect */
+  }
+  
+  .navbar-item:active {
+    background-color: rgba(0, 255, 255, 0.3);
+    transform: scale(1); /* reset the scale when clicked */
+  }
+  
+  .navbar-logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00ff99; /* neon green */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .navbar-logo:hover {
+    color: #00cc7a; /* hover effect to change color */
+    text-decoration: none;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* mobile-responsive styling */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      padding: 20px 15px;
+    }
+  
+    .navbar-item {
+      margin: 10px 0;
+      font-size: 1.2rem;
+    }
+  
+    .navbar-logo {
+      margin-bottom: 15px;
+    }
+  }

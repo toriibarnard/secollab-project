@@ -1,14 +1,15 @@
-// src/pages/Dashboard.js
+// frontend/src/pages/Dashboard.js
+
 import React from 'react';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate from react-router-dom
-import './Dashboard.css'; // Import the stylesheet
+import { useNavigate } from 'react-router-dom';  // import useNavigate from react-router-dom
+import './Dashboard.css'; // import the stylesheet
 
 const Dashboard = () => {
-  const navigate = useNavigate();  // Initialize useNavigate
+  const navigate = useNavigate();  // initialize useNavigate
 
   const handleLogout = () => {
-    localStorage.removeItem('authToken');  // Remove token from localStorage
-    navigate('/login');  // Redirect to login page using useNavigate
+    localStorage.removeItem('authToken');  // remove token from localStorage
+    navigate('/login');  // redirect to login page using useNavigate
   };
 
   return (
