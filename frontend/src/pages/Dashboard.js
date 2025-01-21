@@ -12,6 +12,10 @@ const Dashboard = () => {
     navigate('/login');  // redirect to login page using useNavigate
   };
 
+  const goToChat = () => {
+    navigate('/chat');  // navigate to the chat page
+  };
+
   return (
     <div className="dashboard">
       <div className="header">
@@ -37,6 +41,11 @@ const Dashboard = () => {
             <li>Mark Lee: "Send over the updated requirements"</li>
           </ul>
         </div>
+
+        {/* Add a button to navigate to the chat page */}
+        <button onClick={goToChat} className="chat-button">
+          Go to Chat
+        </button>
       </div>
     </div>
   );
