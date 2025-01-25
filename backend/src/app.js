@@ -10,6 +10,7 @@ require('./config/db');  // import database connection
 require('dotenv').config();
 
 const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/users"); // Import the users route to handle fetching user list
 
 const app = express();
 
@@ -38,6 +39,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use("/auth", authRoutes);
+app.use("/api/users", userRoutes);  // Route to fetch users list
 
 // global error handling middleware
 app.use((err, req, res, next) => {

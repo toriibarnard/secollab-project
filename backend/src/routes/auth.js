@@ -1,7 +1,7 @@
 // backend/src/routes/auth.js
 
 const express = require("express");
-const User = require('../models/userModel'); // no bcrypt
+const User = require('../models/User'); // no bcrypt
 const jwt = require('jsonwebtoken');
 
 const router = express.Router();
